@@ -132,8 +132,8 @@ options_visuals: "Wyglad"
 options_graphics: "Grafika"
 options_language: "Jezyk"
 options_mobile_options: "Sterowanie mobilne"
-options_v-slice_options: "V-Slice"
-options_p-slice_options: Ustawienia P-Slice
+options_v-slice_options: "Ustawienia V-Slice"
+options_p-slice_options: "Ustawienia P-Slice"
 
 graphics_menu: "Ustawienia Graficzne"
 visuals_menu: "Ustawienia wygladu"
@@ -283,17 +283,29 @@ description_safe_frames: "Adjust how much extra time you have to hit a note earl
 setting_sustains_as_one_note: "Lacz Dlugie Strzalki"
 description_sustains_as_one_note: "Po zaznaczeniu, zmissowanie glownej strzalki zmissuje rowniez jej przedluzana czesc, uznajac to za jednego missa."
 
-// V-Slice
+// P-Slice Settings
 setting_freeplay_dynamic_coloring: "Dynamiczne kolorowanie"
 description_freeplay_dynamic_coloring: "Po zaznaczeniu, zmieni kolor domyslnej karty BF na kolor piosenki."
+setting_logging_type: "Typ rejestrowania"
+description_logging_type: "Kontroluje szczegółowość logów gry."
+setting_force_new_tag: "Wymus oznaczanie 'nowych' piosenek"
+description_force_new_tag: "Po zaznaczeniu, wszystkie nieukonczone piosenki otrzymaja plakietke NEW niezaleznie od ich wartosci w metadata.json."
+setting_multithreaded_caching: "Buforowanie Wielowątkowe"
+description_multithreaded_caching: "Jeśli zaznaczone, włącza ładowanie wielowątkowe, co poprawia czas ładowania, ale zmniejsza ryzyko zawieszenia się gry podczas ładowania utworu."
+setting_strict_loading_screen: "Ścisły Ekran Ładowania"
+description_strict_loading_screen: "Jeśli zaznaczone, gra najpierw usunie zasoby interfejsu użytkownika, a następnie wstępnie załaduje dane utworu. (przydatne w przypadku urządzeń z małą ilością pamięci)"
+
+// V-Slice Settings
+setting_naughtyness: "Niegrzeczność"
+description_naughtyness: "Po wyłączeniu tej opcji niektóre „wulgarne treści” (np. przekleństwa) zostaną wyłączone."
 setting_use_results_screen: "Wyswietlaj podsumowanie"
 description_use_results_screen: "Wyswietli ekran z wynikami taki jak w oficjalnej wersji."
 setting_smooth_health_bar: "Smukly pasek zycia"
 description_smooth_health_bar: "Implementuje smuklejszy pasekzycia (jak w V-Slice)"
+setting_use_legacy_bar: "Użyj Starszego Paska"
+description_use_legacy_bar: "Znacznie upraszcza tekst paska zdrowia i wyników."
 setting_special_freeplay_cards: "Specjalne karty w Freeplayu"
 description_special_freeplay_cards: "Po zaznaczeniu, pozwoli na uzywanie customowych kart dla postaci w Freeplayu"
-setting_force_new_tag: "Wymus oznaczanie 'nowych' piosenek"
-description_force_new_tag: "Po zaznaczeniu, wszystkie nieukonczone piosenki otrzymaja plakietke NEW niezaleznie od ich wartosci w metadata.json."
 
 // Loading Screen
 now_loading: "Ladowanie {1}"

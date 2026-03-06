@@ -23,22 +23,22 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Psych-Slice/P-Slice">
+  <a href="https://github.com/TheRealTimosha/FNF-Timosha-Engine">
     <img src="art/banner.png" alt="Logo" width="300" height="200">
   </a>
 
-<h3 align="center">P-Slice Engine</h3>
+<h3 align="center">Timosha Engine</h3>
 
   <p align="center">
     Crossover between Psych Engine and newer versions of FNF (also known as V-Slice)
     <br />
-    <a href="https://github.com/Psych-Slice/P-Slice/wiki"><strong>Explore the Wiki »</strong></a>
+    <a href="https://github.com/TheRealTimosha/FNF-Timosha-Engine/wiki"><strong>Explore the Wiki »</strong></a>
     <br />
     <br />
     ·
-    <a href="https://github.com/Psych-Slice/P-Slice/issues">Report Bug or Request Feature</a>
+    <a href="https://github.com/TheRealTimosha/FNF-Timosha-Engine/issues">Report Bug or Request Feature</a>
     ·
-    <a href="https://github.com/Psych-Slice/P-Slice/pulls">Create Pull Request</a>
+    <a href="https://github.com/TheRealTimosha/FNF-Timosha-Engine/pulls">Create Pull Request</a>
   </p>
 </div>
 

@@ -114,7 +114,7 @@ class StorageUtil
 enum abstract StorageType(String) from String to String
 {
 	final forcedPath = '/storage/emulated/0/';
-	final packageNameLocal = 'com.mikolka9144.pslice';
+	final packageNameLocal = 'com.TheRealTimosha.timoshaengine';
 	final fileLocal = 'PSliceEngine';
 
 	//* Important note

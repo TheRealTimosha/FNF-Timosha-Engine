@@ -3778,11 +3778,9 @@ public function goodNoteHit(note:Note):Void
 		{
 			combo++;
 			maxCombo = FlxMath.maxInt(maxCombo, combo);
-			if (combo > 9999)
-				combo = 9999;
 			popUpScore(note);
 		}
-		else if (!guitarHeroSustains)
+		else if (!guitarHeroSustains && !cpuControlled)
 		{ // ? Legacy scoring for sustains
 			songScore += 125;
 			updateScoreText();

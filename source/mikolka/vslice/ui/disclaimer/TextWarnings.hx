@@ -10,7 +10,7 @@ class OutdatedState extends WarningState
 		final escape:String = (controls.mobileC) ? 'B' : 'ESCAPE';
 
 		var guh = "Sup "+bro+", looks like you're running an   \n
-		outdated version of TIimosha Engine (" + MainMenuState.timoshaEngineVersion + "),\n
+		outdated version of Timosha Engine (" + MainMenuState.timoshaEngineVersion + "),\n
 		please update to " + newVersion + "!\n
 		Press "+escape+" to proceed anyway.\n
 		\n

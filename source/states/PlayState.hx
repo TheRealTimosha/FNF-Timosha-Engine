@@ -3630,6 +3630,7 @@ function noteMissCommon(direction:Int, note:Note = null)
 	vocals.volume = 0;
 }
 
+var canPlay = true;
 function opponentNoteHit(note:Note):Void
 {
 	var result:Dynamic = callOnLuas('opponentNoteHitPre', [
@@ -3662,7 +3663,7 @@ function opponentNoteHit(note:Note):Void
 
 		if (char != null)
 		{
-			var canPlay:Bool = true;
+			canPlay = (!note.isSustainNote || ClientPrefs.data.oldSusStyle && note.isSustainNote);
 			if (note.isSustainNote)
 			{
 				var holdAnim:String = animToPlay + '-hold';
@@ -3738,7 +3739,7 @@ public function goodNoteHit(note:Note):Void
 
 			if (char != null)
 			{
-				var canPlay:Bool = true;
+				canPlay = (!note.isSustainNote || ClientPrefs.data.oldSusStyle && note.isSustainNote);
 				if (note.isSustainNote)
 				{
 					var holdAnim:String = animToPlay + '-hold';

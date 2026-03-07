@@ -15,7 +15,8 @@ class PSliceSubState extends BaseOptionsMenu {
 		var option:Option = new Option('Logging Type',
 			'Controls verbosity of the game\'s logs.',
 			'loggingType',
-			STRING,["None", "Console", "File"]);
+			STRING,
+			["None", "Console", "File"]);
 		addOption(option);
 		#end
 		

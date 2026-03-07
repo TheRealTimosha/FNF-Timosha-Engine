@@ -8,58 +8,8 @@ import states.InitState;
 
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
-	// Mobile and Mobile Controls Releated
-	public var extraHints:String = "NONE"; // hitbox extra hint option
-	public var hitbox2:Bool = true; // hitbox extra button position option
-	public var dynamicColors:Bool = true; // yes cause its cool -Karim
-	public var controlsAlpha:Float = 0.6;
-	public var screensaver:Bool = false;
-	public var wideScreen:Bool = false;
-	#if android
-	public var storageType:String = "EXTERNAL";
-	#end
-	public var hitboxType:String = "Gradient";
-	public var popUpRating:Bool = true;
-	public var vsync:Bool = false;
-	public var vibrating:Bool = false;
 
-	public var favSongIds:Array<String> = [];
-	public var lastFreeplayMod:String = '||bf';
-
-	public var downScroll:Bool = false;
-	public var middleScroll:Bool = false;
-	public var opponentStrums:Bool = true;
-	public var showFPS:Bool = true;
-	public var showFPSOpacity:Float = 0.6;
-	public var fpsRework:Bool = false;
-	public var flashing:Bool = true;
-	public var autoPause:Bool = true;
-	public var antialiasing:Bool = true;
-	public var noteSkin:String = 'Default';
-	public var splashSkin:String = 'Psych';
-	public var holdSkin:String = 'Vanilla';
-	public var splashAlpha:Float = 0.6;
-	public var holdSplashAlpha:Float = 0.6;
-	public var lowQuality:Bool = false;
-	public var shaders:Bool = true;
-	public var cacheOnGPU:Bool = #if !switch false #else true #end; //From Stilic (I think he hates us actually)
-	public var cacheOnCPU:Bool = #if android false #else true #end;
-	public var strictLoadingScreen:Bool = true;
-	public var framerate:Int = 60;
-	public var camZooms:Bool = true;
-	public var hideHud:Bool = false;
-
-	public var vsliceMobileControls:Bool = false;
-	public var vsliceFreeplayColors:Bool = true;
-	public var vsliceResults:Bool = true;
-	public var vsliceSpecialCards:Bool = true;
-	public var vsliceSmoothBar:Bool = true;
-	public var loggingType:String = "None";
-	public var vsliceLegacyBar:Bool = false;
-	public var vsliceNaughtyness:Bool = #if mobile false #else true #end;
-	public var vsliceForceNewTag:Bool = false;
-
-	public var noteOffset:Int = 0;
+    //Note Colors
 	public var arrowRGB:Array<Array<FlxColor>> = [
 		[0xFFC24B99, 0xFFFFFFFF, 0xFF3C1F56],
 		[0xFF00FFFF, 0xFFFFFFFF, 0xFF1542B7],
@@ -71,15 +21,80 @@ import states.InitState;
 		[0xFF71E300, 0xFFF6FFE6, 0xFF003100],
 		[0xFFFF884E, 0xFFFFFAF5, 0xFF6C0000]];
 
-	public var ghostTapping:Bool = true;
+    //Graphics
+	public var lowQuality:Bool = false;
+	public var antialiasing:Bool = true;
+	public var shaders:Bool = true;
+	public var cacheOnGPU:Bool = #if !switch false #else true #end; //From Stilic (I think he hates us actually)
+	public var wideScreen:Bool = false;
+	public var framerate:Int = 60;
+
+	//Visuals & UI
+	public var noteSkin:String = 'Default';
+	public var splashSkin:String = 'Psych';
+	public var holdSkin:String = 'Vanilla';
+	public var splashAlpha:Float = 0.6;
+	public var holdSplashAlpha:Float = 0.6;
+	public var hideHud:Bool = false;
 	public var timeBarType:String = 'Time Left';
+	public var flashing:Bool = true;
+	public var camZooms:Bool = true;
 	public var scoreZoom:Bool = true;
-	public var noReset:Bool = false;
 	public var healthBarAlpha:Float = 1;
-	public var hitsoundVolume:Float = 0;
+	public var showFPSOpacity:Float = 0.6;
+	public var fpsRework:Bool = false;
 	public var pauseMusic:String = 'Tea Time';
 	public var checkForUpdates:Bool = true;
+	public var discordRPC:Bool = true;
 	public var comboStacking:Bool = true;
+
+	//Gameplay
+	public var downScroll:Bool = false;
+	public var middleScroll:Bool = false;
+	public var opponentStrums:Bool = true;
+	public var ghostTapping:Bool = true;
+	public var autoPause:Bool = true;
+	public var popUpRating:Bool = true;
+	public var noReset:Bool = false;
+	public var vibrating:Bool = false;
+	public var guitarHeroSustains:Bool = true;
+	public var hitsoundVolume:Float = 0;
+	public var ratingOffset:Int = 0;
+	public var sickWindow:Float = 45.0;
+	public var goodWindow:Float = 90.0;
+	public var badWindow:Float = 135.0;
+	public var safeFrames:Float = 10.0;
+
+	//P-Slice
+	public var vsliceFreeplayColors:Bool = true;
+	public var loggingType:String = "None";
+	public var vsliceForceNewTag:Bool = false;
+	public var cacheOnCPU:Bool = #if android false #else true #end;
+	public var strictLoadingScreen:Bool = true;
+
+	//V-Slice
+	public var vsliceNaughtyness:Bool = #if mobile false #else true #end;
+	public var vsliceResults:Bool = true;
+	public var vsliceSmoothBar:Bool = true;
+	public var vsliceLegacyBar:Bool = false;
+	public var vsliceSpecialCards:Bool = true;
+	public var oldSusStyle:Bool = false;
+
+	//Mobile
+	public var extraHints:String = "NONE"; // hitbox extra hint option
+	public var controlsAlpha:Float = 0.6;
+	public var screensaver:Bool = false;
+	public var hitboxType:String = "Gradient";
+	public var hitbox2:Bool = true; // hitbox extra button position option
+	public var dynamicColors:Bool = true; // yes cause its cool -Karim
+	#if android
+	public var storageType:String = "EXTERNAL";
+	#end
+
+	//Language
+	public var language:String = 'en-US';
+
+	//Gameplay Changers
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -101,17 +116,16 @@ import states.InitState;
 		'botplay' => false,
 		'opponentplay' => false
 	];
-
+	
+    //Other
+	public var vsync:Bool = false;
+	public var favSongIds:Array<String> = [];
+	public var lastFreeplayMod:String = '||bf';
+	public var showFPS:Bool = true;
+	public var vsliceMobileControls:Bool = false;
+	public var noteOffset:Int = 0;
 	public var comboOffset:Array<Int> = [0, 0, 0, 0];
-	public var ratingOffset:Int = 0;
-	public var sickWindow:Float = 45.0;
-	public var goodWindow:Float = 90.0;
-	public var badWindow:Float = 135.0;
-	public var safeFrames:Float = 10.0;
-	public var guitarHeroSustains:Bool = true;
-	public var discordRPC:Bool = true;
 	public var loadingScreen:Bool = true;
-	public var language:String = 'en-US';
 }
 
 class ClientPrefs {

@@ -7,13 +7,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 	public function new()
 	{
 		title = Language.getPhrase('gameplay_menu', 'Gameplay Settings');
-		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
+		rpcTitle = 'Gameplay Settings Menu';
 
-		//I'd suggest using "Downscroll" as an example for making your own option since it is the simplest here
-		var option:Option = new Option('Downscroll', //Name
-			'If checked, notes go Down instead of Up, simple enough.', //Description
-			'downScroll', //Save data variable name
-			BOOL); //Variable type
+		var option:Option = new Option('Downscroll',
+			'If checked, notes go Down instead of Up, simple enough.',
+			'downScroll',
+			BOOL);
 		addOption(option);
 
 		var option:Option = new Option('Middlescroll',
@@ -130,9 +129,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 10;
 		option.changeValue = 0.1;
 		addOption(option);
-
 		
-
 		super();
 	}
 

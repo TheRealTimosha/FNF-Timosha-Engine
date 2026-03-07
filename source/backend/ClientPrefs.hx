@@ -33,6 +33,7 @@ import states.InitState;
 	public var noteSkin:String = 'Default';
 	public var splashSkin:String = 'Psych';
 	public var holdSkin:String = 'Vanilla';
+	public var holdNoteAlpha:Float = 0.6;
 	public var splashAlpha:Float = 0.6;
 	public var holdSplashAlpha:Float = 0.6;
 	public var hideHud:Bool = false;

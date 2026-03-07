@@ -85,6 +85,17 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			addOption(option);
 		}
 
+		var option:Option = new Option('Note Hold Opacity',
+			'How much transparent should the Note Hold be.',
+			'holdNoteAlpha',
+			PERCENT);
+		option.scrollSpeed = 1.6;
+		option.minValue = 0;
+		option.maxValue = 1;
+		option.changeValue = 0.01;
+		option.decimals = 2;
+		addOption(option);
+
 		var option:Option = new Option('Note Splash Opacity',
 			'How much transparent should the Note Splashes be.',
 			'splashAlpha',
@@ -92,8 +103,8 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.0;
 		option.maxValue = 1;
-		option.changeValue = 0.1;
-		option.decimals = 1;
+		option.changeValue = 0.01;
+		option.decimals = 2;
 		addOption(option);
 		option.onChange = playNoteSplashes;
 
@@ -104,8 +115,8 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.0;
 		option.maxValue = 1;
-		option.changeValue = 0.1;
-		option.decimals = 1;
+		option.changeValue = 0.01;
+		option.decimals = 2;
 		addOption(option);
 
 		var option:Option = new Option('Hide HUD',
@@ -146,8 +157,8 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.0;
 		option.maxValue = 1;
-		option.changeValue = 0.1;
-		option.decimals = 1;
+		option.changeValue = 0.01;
+		option.decimals = 2;
 		addOption(option);
 		
 		var option:Option = new Option('FPS Counter',
@@ -157,8 +168,8 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.0;
 		option.maxValue = 1;
-		option.changeValue = 0.1;
-		option.decimals = 1;
+		option.changeValue = 0.01;
+		option.decimals = 2;
 		addOption(option);
 
 		option.onChange = onChangeFPSCounter;

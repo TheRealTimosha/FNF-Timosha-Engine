@@ -10,8 +10,6 @@ import objects.StrumNote;
 
 import flixel.math.FlxRect;
 
-
-
 typedef EventNote = {
 	strumTime:Float,
 	event:String,
@@ -281,10 +279,12 @@ class Note extends FlxSprite
 
 		if (isSustainNote && prevNote != null)
 		{
-			alpha = 0.6;
-			multAlpha = 0.6;
+			alpha = ClientPrefs.data.holdNoteAlpha;
+			multAlpha = ClientPrefs.data.holdNoteAlpha;
 			hitsoundDisabled = true;
 			if(ClientPrefs.data.downScroll) flipY = true;
+
+			scale.y = 0.7;
 
 			offsetX += width / 2;
 			copyAngle = false;
@@ -292,6 +292,7 @@ class Note extends FlxSprite
 			animation.play(colArray[noteData % colArray.length] + 'holdend');
 
 			updateHitbox();
+			centerOffsets();
 
 			offsetX -= width / 2;
 
@@ -302,11 +303,11 @@ class Note extends FlxSprite
 			{
 				prevNote.animation.play(colArray[prevNote.noteData % colArray.length] + 'hold');
 
-				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.05;
+				prevNote.scale.y = Conductor.stepCrochet / 100 * 1.057;
 				if(createdFrom != null && createdFrom.songSpeed != null) prevNote.scale.y *= createdFrom.songSpeed;
 
 				if(PlayState.isPixelStage) {
-					prevNote.scale.y *= 1.19;
+					prevNote.scale.y *= 4.58;
 					prevNote.scale.y *= (6 / height); //Auto adjust note size
 				}
 				prevNote.updateHitbox();

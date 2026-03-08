@@ -45,6 +45,7 @@ import states.InitState;
 	public var healthBarAlpha:Float = 1;
 	public var showFPSOpacity:Float = 0.6;
 	public var fpsRework:Bool = false;
+	public var botTxtFade:Bool = true;
 	public var pauseMusic:String = 'Tea Time';
 	public var checkForUpdates:Bool = true;
 	public var discordRPC:Bool = true;

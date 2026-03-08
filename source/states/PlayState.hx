@@ -1949,7 +1949,7 @@ override public function update(elapsed:Float)
 	setOnScripts('curDecStep', curDecStep);
 	setOnScripts('curDecBeat', curDecBeat);
 
-	if (botplayTxt != null && botplayTxt.visible)
+	if (botplayTxt != null && botplayTxt.visible && ClientPrefs.data.botTxtFade)
 	{
 		botplaySine += 180 * elapsed;
 		botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);

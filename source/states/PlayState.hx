@@ -1986,8 +1986,8 @@ override public function update(elapsed:Float)
 		else if (healthBar.percent > 80)
 			iconP1.animation.curAnim.curFrame = 2;
 		else
-				iconP1.animation.curAnim.curFrame = 0;
-		} else {
+			iconP1.animation.curAnim.curFrame = 0;
+	} else {
 		if (healthBar.percent < 20)
 			iconP1.animation.curAnim.curFrame = 1;
 		else
@@ -3637,6 +3637,11 @@ function noteMissCommon(direction:Int, note:Note = null)
 var canPlay = true;
 function opponentNoteHit(note:Note):Void
 {
+	var time:Float = 0.15;
+	if(note.isSustainNote && !note.animation.curAnim.name.endsWith('end')) {
+		time += 0.15;
+	}
+
 	var result:Dynamic = callOnLuas('opponentNoteHitPre', [
 		notes.members.indexOf(note),
 		Math.abs(note.noteData),
@@ -3685,7 +3690,12 @@ function opponentNoteHit(note:Note):Void
 
 	if (opponentVocals.length <= 0)
 		vocals.volume = 1;
-	strumPlayAnim(true, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+	if (ClientPrefs.data.strumLitStyle == 'BPM Based') {
+	    strumPlayAnim(true, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+	}
+	if (ClientPrefs.data.strumLitStyle == 'Full Anim') {
+		strumPlayAnim(true, Std.int(Math.abs(note.noteData)), time / playbackRate);
+	}
 	note.hitByOpponent = true;
 
 	stagesFunc(function(stage:BaseStage) stage.opponentNoteHit(note));
@@ -3706,6 +3716,11 @@ function opponentNoteHit(note:Note):Void
 
 public function goodNoteHit(note:Note):Void
 {
+	var time:Float = 0.15;
+	if(note.isSustainNote && !note.animation.curAnim.name.endsWith('end')) {
+		time += 0.15;
+	}
+
 	if (note.wasGoodHit)
 		return;
 	if (cpuControlled && note.ignoreNote)
@@ -3775,8 +3790,8 @@ public function goodNoteHit(note:Note):Void
 			if (spr != null)
 				spr.playAnim('confirm', true);
 		}
-		else
-			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+		else if (ClientPrefs.data.strumLitStyle == 'BPM Based') strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+		else if (ClientPrefs.data.strumLitStyle == 'Full Anim') strumPlayAnim(false, Std.int(Math.abs(note.noteData)), time / playbackRate);
 		vocals.volume = 1;
 
 		if (!note.isSustainNote)

@@ -38,6 +38,7 @@ import states.InitState;
 	public var holdSplashAlpha:Float = 0.6;
 	public var hideHud:Bool = false;
 	public var timeBarType:String = 'Time Left';
+	public var strumLitStyle:String = 'BPM Based';
 	public var flashing:Bool = true;
 	public var camZooms:Bool = true;
 	public var scoreZoom:Bool = true;

@@ -132,6 +132,13 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
+		var option:Option = new Option('Strum Light Up Style:',
+		    "How would you like the strum animations to play when lit up? \nNote: Turn on 'Light Opponent/Player Strums' to see this in action!",
+		    'strumLitStyle',
+			STRING,
+		   ['BPM Based', 'Full Anim']);
+	    addOption(option);
+
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',

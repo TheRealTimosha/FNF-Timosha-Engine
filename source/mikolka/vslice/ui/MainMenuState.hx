@@ -14,7 +14,7 @@ class MainMenuState extends MusicBeatState
 	#else
 	public static var psychEngineVersion:String = '0.6.3'; // This is also used for Discord RPC
 	#end
-	public static var timoshaEngineVersion:String = '0.0.1 - HOTFIX';
+	public static var timoshaEngineVersion:String = '0.0.3';
 	public static var pSliceVersion:String = '3.4.2';
 	public static var funkinVersion:String = '0.7.6'; // Version of funkin' we are emulationg
 

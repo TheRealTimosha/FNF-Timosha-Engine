@@ -535,7 +535,7 @@ class PlayState extends MusicBeatState
 
 		noteGroup.add(strumLineNotes);
 
-		if (ClientPrefs.data.timeBarType == 'Song Name')
+		if (ClientPrefs.data.timeBarType == 'Song Name' || ClientPrefs.data.timeBarType == 'Song Name + Time')
 		{
 			timeTxt.size = 24;
 			timeTxt.y += 3;
@@ -1181,6 +1181,27 @@ class PlayState extends MusicBeatState
 						countdownGo = createCountdownSprite(introAlts[2], antialias);
 						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
 						tick = GO;
+						if (ClientPrefs.data.tauntOnGo)
+						{
+							final charsToHey = [dad, boyfriend, gf];
+							for (char in charsToHey)
+							{
+								if(char != null)
+								{
+									if (char.animOffsets.exists('hey') || char.animOffsets.exists('cheer'))
+									{
+										char.playAnim(char.animOffsets.exists('hey') ? 'hey' : 'cheer', true);
+										char.specialAnim = true;
+										char.heyTimer = 0.6;
+									} else if (char.animOffsets.exists('singUP') && (!char.animOffsets.exists('hey') || !char.animOffsets.exists('cheer')))
+									{
+										char.playAnim('singUP', true);
+										char.specialAnim = true;
+										char.heyTimer = 0.6;
+									}
+								}
+							}
+						}
 					case 4:
 						tick = START;
 				}
@@ -2106,18 +2127,20 @@ override public function update(elapsed:Float)
 	else if (!paused && updateTime)
 	{
 		var curTime:Float = Math.max(0, Conductor.songPosition - ClientPrefs.data.noteOffset);
-		songPercent = (curTime / songLength);
+		songPercent = Conductor.songPosition / songLength;
 
 		var songCalc:Float = (songLength - curTime);
 		if (ClientPrefs.data.timeBarType == 'Time Elapsed')
 			songCalc = curTime;
 
-		var secondsTotal:Int = Math.floor(songCalc / 1000);
-		if (secondsTotal < 0)
-			secondsTotal = 0;
-
-		if (ClientPrefs.data.timeBarType != 'Song Name')
-			timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
+		if(ClientPrefs.data.timeBarType == 'Time Left')
+			timeTxt.text = CoolUtil.getSongDuration(Conductor.songPosition, songLength);
+		else if(ClientPrefs.data.timeBarType == 'Modern Time')
+			timeTxt.text = CoolUtil.formatTime(Conductor.songPosition) + ' / ' + CoolUtil.formatTime(songLength);
+		else if(ClientPrefs.data.timeBarType == 'Song Name + Time')
+			timeTxt.text = SONG.song + ' (' + CoolUtil.formatTime(Conductor.songPosition) + ' / ' + CoolUtil.formatTime(songLength) + ')';
+		else if (ClientPrefs.data.timeBarType != 'Song Name')
+			timeTxt.text = CoolUtil.formatTime(Conductor.songPosition);
 	}
 
 	if (camZooming)
@@ -3758,7 +3781,7 @@ function opponentNoteHit(note:Note):Void
 
 		if (char != null)
 		{
-			canPlay = (!note.isSustainNote || ClientPrefs.data.oldSusStyle && note.isSustainNote);
+			canPlay = (!note.isSustainNote || ClientPrefs.data.vsliceoldSusStyle && note.isSustainNote);
 			if (note.isSustainNote)
 			{
 				var holdAnim:String = animToPlay + '-hold';
@@ -3850,7 +3873,7 @@ public function goodNoteHit(note:Note):Void
 
 			if (char != null)
 			{
-				canPlay = (!note.isSustainNote || ClientPrefs.data.oldSusStyle && note.isSustainNote);
+				canPlay = (!note.isSustainNote || ClientPrefs.data.vsliceoldSusStyle && note.isSustainNote);
 				if (note.isSustainNote)
 				{
 					var holdAnim:String = animToPlay + '-hold';

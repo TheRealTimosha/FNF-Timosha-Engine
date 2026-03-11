@@ -124,12 +124,18 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			'hideHud',
 			BOOL);
 		addOption(option);
+
+		var option:Option = new Option("Taunt on 'GO'",
+		    "If checked, the characters will taunt on GO when you play.",
+		    'tauntOnGo',
+		    BOOL);
+	    addOption(option);
 		
 		var option:Option = new Option('Time Bar:',
 			"What should the Time Bar display?",
 			'timeBarType',
 			STRING,
-			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
+			['Time Left', 'Time Elapsed', 'Song Name', 'Modern Time', 'Song Name + Time', 'Disabled']);
 		addOption(option);
 
 		var option:Option = new Option('Strum Light Up Style:',

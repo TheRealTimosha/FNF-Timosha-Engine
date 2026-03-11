@@ -37,6 +37,7 @@ import states.InitState;
 	public var splashAlpha:Float = 0.6;
 	public var holdSplashAlpha:Float = 0.6;
 	public var hideHud:Bool = false;
+	public var tauntOnGo:Bool = false;
 	public var timeBarType:String = 'Time Left';
 	public var strumLitStyle:String = 'BPM Based';
 	public var flashing:Bool = true;
@@ -82,7 +83,7 @@ import states.InitState;
 	public var vsliceSmoothBar:Bool = true;
 	public var vsliceLegacyBar:Bool = false;
 	public var vsliceSpecialCards:Bool = true;
-	public var oldSusStyle:Bool = false;
+	public var vsliceoldSusStyle:Bool = false;
 
 	//Mobile
 	public var extraHints:String = "NONE"; // hitbox extra hint option

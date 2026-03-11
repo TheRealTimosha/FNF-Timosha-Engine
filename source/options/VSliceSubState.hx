@@ -38,7 +38,7 @@ class VSliceSubState extends BaseOptionsMenu {
 
 		var option:Option = new Option('Old Sustain Note Style',
 			'If checked, sustain notes will react like how they did before 0.3.X.',
-			'oldSusStyle',
+			'vsliceoldSusStyle',
 			BOOL);
 		addOption(option);
 

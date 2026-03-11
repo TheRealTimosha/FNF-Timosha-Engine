@@ -1,8 +1,9 @@
 Português (Brasil)
 
 // Gameplay
-score_text: "Pontos: {1} | Erros: {2} | Avaliação: {3}"
-score_text_instakill: "Pontos: {1} | Avaliação: {2}"
+score_text: "Pontos: {1} | Erros: {2} | Combo/Máx: {3} | NPS/Máx: {4} | Precisão: {5} | Avaliação: {6}"
+score_text_instakill: "Pontos: {1} | Combo/Máx: {2} | NPS/Máx: {3} | Precisão: {4} | Avaliação: {5}"
+score_text_botplay: "Combo/Máx: {1} | NPS/Máx: {2} | Modo Automático"
 botplay: "Automático"
 
 rating_you_suck: "Que Horrível!"
@@ -253,6 +254,8 @@ setting_opponent_notes: "Notas do Oponente"
 description_opponent_notes: "Se desmarcado, as notas do oponente serão ocultadas."
 setting_ghost_tapping: "Ghost Tapping"
 description_ghost_tapping: "Se marcado, você não irá receber penalidades por apertar botões enquanto não há notas para apertar."
+setting_bad_and_shit_break_combo: "Combinação de Quebra Ruim e Merda"
+description_bad_and_shit_break_combo: "Se marcado, tocar notas ruins ou de merda interromperá seu combo."
 setting_auto_pause: "Pausa Automática"
 description_auto_pause: "Se marcado, a janela é automaticamente pausada se não estiver em foco."
 setting_pop_up_score: "Pop Up Dos Pontos"

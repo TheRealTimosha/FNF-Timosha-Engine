@@ -56,6 +56,7 @@ import states.InitState;
 	public var middleScroll:Bool = false;
 	public var opponentStrums:Bool = true;
 	public var ghostTapping:Bool = true;
+	public var badShitBreakCombo:Bool = false;
 	public var autoPause:Bool = true;
 	public var popUpRating:Bool = true;
 	public var noReset:Bool = false;

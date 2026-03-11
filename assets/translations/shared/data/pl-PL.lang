@@ -4,8 +4,9 @@ Polski (Poland)
 
 
 // Gameplay
-score_text: "Wynik: {1} | Skuchy: {2} | Ocena: {3}"
-score_text_instakill: "Wynik: {1} | Ocena: {2}"
+score_text: "Wynik: {1} | Skuchy: {2} | Kombinacja: {3} | NPS/Maks: {4} | Dokładność: {5} | Ocena: {6}"
+score_text_instakill: "Wynik: {1} | Kombinacja: {2} | NPS/Maks: {3} | Dokładność: {4} | Ocena: {5}"
+score_text_botplay: "Kombinacja: {1} | NPS/Maks: {2} | Modo Automático"
 botplay: "Botplay"
 
 rating_you_suck: "Ssiesz!"
@@ -273,7 +274,9 @@ description_middlescroll: "Po zaznaczeniu, twoje strzałki oraz oponeta zostana 
 setting_opponent_notes: "Strzalki Oponenta"
 description_opponent_notes: "Po odznaczeniu, strzalko oponenta zostana ukryte."
 setting_ghost_tapping: "Ghost Tapping"
-description_ghost_tapping: "Po zaznaczeniu, nie bedziesz karany za klikanie ."
+description_ghost_tapping: "Po zaznaczeniu, nie bedziesz karany za klikanie."
+setting_bad_and_shit_break_combo: "Kombinacja Bad and Shit Break"
+description_bad_and_shit_break_combo: "Po zaznaczeniu, trafienie złych lub gównianych nut przerwie twoją kombinację."
 setting_auto_pause: "Auto Pauza"
 description_auto_pause: "Po zaznaczeniu, the game automatically pauses when the window is out of focus."
 setting_disable_reset_button: "Disable Reset Button"

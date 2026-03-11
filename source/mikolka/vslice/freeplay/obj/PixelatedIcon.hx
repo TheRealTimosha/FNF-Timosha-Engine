@@ -46,7 +46,7 @@ class PixelatedIcon extends FlxFilteredSprite
         if (image == null) //TODO
         {
           trace('[WARN] Character ${char} has no freeplay icon.');
-          image = Paths.image("icons/icon-face");
+          image = Paths.image("icons/icon-no-icon");
         }
         this.loadGraphic(image,true,Math.floor(image.width / 2), Math.floor(image.height));
         animation.add("idle",[0],ICON_FRAMERATE,false);

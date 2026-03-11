@@ -58,6 +58,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 
+			var option:Option = new Option('Enable Taunt Key',
+			"If checked, pressing the Taunt key will make BF go HEY!!",
+			'spaceVPose',
+            BOOL);
+		addOption(option);
+
 		var option:Option = new Option('Vibrations',
 			"If checked, your device will vibrate at some cases.",
 			'vibrating',

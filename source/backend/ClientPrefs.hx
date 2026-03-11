@@ -61,6 +61,7 @@ import states.InitState;
 	public var autoPause:Bool = true;
 	public var popUpRating:Bool = true;
 	public var noReset:Bool = false;
+	public var spaceVPose:Bool = true;
 	public var vibrating:Bool = false;
 	public var guitarHeroSustains:Bool = true;
 	public var hitsoundVolume:Float = 0;
@@ -166,7 +167,9 @@ class ClientPrefs {
 		'volume_down'	=> [NUMPADMINUS, MINUS],
 		
 		'debug_1'		=> [SEVEN],
-		'debug_2'		=> [EIGHT]
+		'debug_2'		=> [EIGHT],
+
+		'taunt'		    => [SPACE, NONE]
 	];
 	public static var gamepadBinds:Map<String, Array<FlxGamepadInputID>> = [
 		'note_up'		=> [DPAD_UP, Y],

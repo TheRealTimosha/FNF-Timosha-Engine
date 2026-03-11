@@ -3405,6 +3405,22 @@ private function onKeyPress(event:KeyboardEvent):Void
 		if (FlxG.keys.checkStatus(eventKey, JUST_PRESSED))
 			keyPressed(key);
 	}
+
+	if(!cpuControlled) 
+	{
+	var char:Character = boyfriend;
+		if (controls.justPressed('taunt') && !char.animation.curAnim.name.endsWith('miss') && char.specialAnim == false && ClientPrefs.data.spaceVPose) {
+			if (char.animOffsets.exists('hey'))
+		{
+			char.playAnim('hey', true);
+			char.specialAnim = true;
+			char.heyTimer = 0.59;
+			FlxG.sound.play(Paths.sound('hey'));
+			trace("HEY!!");
+		}
+		else trace ('Character doesnt have a hey animation!');
+	}
+}
 }
 
 private function keyPressed(key:Int)

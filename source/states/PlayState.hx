@@ -143,7 +143,7 @@ class PlayState extends MusicBeatState
 	public static var altInstrumentals:String = null;
 	public static var storyDifficultyColor = FlxColor.GRAY;
 
-	public var spawnTime:Float = 2000;
+	public var spawnTime:Float = 1500;
 
 	public var inst:FlxSound;
 	public var vocals:FlxSound;

@@ -176,6 +176,8 @@ class DesktopMenuState extends FlxBasic
 					}
 				}
 			}
+		if (!ClientPrefs.data.antiCheatEnable)
+		{
 			if (#if LEGACY_PSYCH FlxG.keys.anyJustPressed(ClientPrefs.keyBinds.get('debug_1')
 				.filter(s -> s != -1)) #else host.controls.justPressed('debug_1') #end)
 			{
@@ -185,6 +187,7 @@ class DesktopMenuState extends FlxBasic
 				MusicBeatState.switchState(new MasterEditorMenu());
 			}
 		}
+	}
 
 		super.update(elapsed);
 	}

@@ -58,6 +58,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 
+		var option:Option = new Option('Disable Editors',
+			"If checked, disables the Chart Editor and Character Editor. Try opening it with this option enabled and see what happens!",
+			'antiCheatEnable',
+			BOOL);
+		addOption(option);
+
 			var option:Option = new Option('Enable Taunt Key',
 			"If checked, pressing the Taunt key will make BF go HEY!!",
 			'spaceVPose',

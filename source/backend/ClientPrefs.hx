@@ -62,6 +62,7 @@ import states.InitState;
 	public var autoPause:Bool = true;
 	public var popUpRating:Bool = true;
 	public var noReset:Bool = false;
+	public var antiCheatEnable:Bool = false;
 	public var spaceVPose:Bool = true;
 	public var vibrating:Bool = false;
 	public var guitarHeroSustains:Bool = true;

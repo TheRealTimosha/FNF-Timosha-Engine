@@ -3,7 +3,7 @@ Português (Brasil)
 // Gameplay
 score_text: "Pontos: {1} | Erros: {2} | Combo/Máx: {3} | NPS/Máx: {4} | Precisão: {5} | Avaliação: {6}"
 score_text_instakill: "Pontos: {1} | Combo/Máx: {2} | NPS/Máx: {3} | Precisão: {4} | Avaliação: {5}"
-score_text_botplay: "Combo/Máx: {1} | NPS/Máx: {2} | Modo Automático"
+score_text_botplay: "Pontos: {1} | Combo/Máx: {2} | NPS/Máx: {3} | Modo Automático"
 botplay: "Automático"
 
 rating_you_suck: "Que Horrível!"
@@ -267,6 +267,8 @@ setting_pop_up_score: "Pop Up Dos Pontos"
 description_pop_up_score: "Se desmarcado, Acertar notas não ira emitir "sick", "good" e popups de combos.\n(Útil para celulares fracos)"
 setting_disable_reset_button: "Desativar Botão de Reset"
 description_disable_reset_button: "Se marcado, apertar Reset não irá matar o jogador."
+setting_disable_editors: "Desativar Editores"
+description_disable_editors: "Se marcado, essa opção desativa o Editor de Gráficos e o Editor de Caracteres. Tente abrir o programa com essa opção ativada e veja o que acontece!"
 setting_enable_taunt_key: "Tecla de ativação de provocação"
 description_enable_taunt_key: "Se marcado, pressionar a tecla de Provocação fará com que o BF diga EI!!"
 setting_hitsound_volume: "Volume do Som de Acerto"

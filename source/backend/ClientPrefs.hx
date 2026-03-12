@@ -25,6 +25,7 @@ import states.InitState;
 	public var lowQuality:Bool = false;
 	public var antialiasing:Bool = true;
 	public var shaders:Bool = true;
+	public var colorblindMode:String = 'None';
 	public var cacheOnGPU:Bool = #if !switch false #else true #end; //From Stilic (I think he hates us actually)
 	public var wideScreen:Bool = false;
 	public var framerate:Int = 60;

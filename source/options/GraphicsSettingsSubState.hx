@@ -42,6 +42,14 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 
+		var option:Option = new Option('Colorblind Filter:',
+			'You can set colorblind filter (makes the game more playable for colorblind people)',
+			'colorblindMode',
+			STRING,
+			['None', 'Deuteranopia', 'Protanopia', 'Tritanopia', 'Protanomaly', 'Tritanomaly', 'Virtual Boy', 'Gameboy', 'Downer', 'Grayscale', 'Invert']);
+		option.onChange = backend.Colorblind.updateFilter;
+		addOption(option);
+
 		var option:Option = new Option('GPU Caching', //Name
 			"If checked, allows the GPU to be used for caching textures, decreasing RAM usage.\nDon't turn this on if you have a shitty Graphics Card.", //Description
 			'cacheOnGPU',

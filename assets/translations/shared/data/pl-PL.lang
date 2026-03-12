@@ -272,6 +272,8 @@ setting_discord_rich_presence: "Discord Rich Presence"
 description_discord_rich_presence: "Po zaznaczeniu, pokae twoim znajomym do Discordzie w co grasz!"
 setting_combo_stacking: "Combo Stacking"
 description_combo_stacking: "Po odznaczeniu, zredukuje licznik kombo do pojedynczej oceny, co moze ulatwic jej odczytanie."
+setting_disable_splash_screen: "Wyłącz Ekran Powitalny"
+description_disable_splash_screen: "Po zaznaczeniu, ekran powitalny zostanie wyłączony przy uruchamianiu."
 
 // Gameplay Settings
 setting_downscroll: "Downscroll"

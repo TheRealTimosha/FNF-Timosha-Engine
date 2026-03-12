@@ -53,6 +53,7 @@ import states.InitState;
 	public var checkForUpdates:Bool = true;
 	public var discordRPC:Bool = true;
 	public var comboStacking:Bool = true;
+	public var disableSplash:Bool = false;
 
 	//Gameplay
 	public var downScroll:Bool = false;

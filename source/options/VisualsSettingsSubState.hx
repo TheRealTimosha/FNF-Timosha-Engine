@@ -237,6 +237,12 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 
+		var option:Option = new Option('Disable Splash Screen',
+			'If checked, the splash screen gets disabled on startup.',
+			'disableSplash',
+			BOOL);
+		addOption(option);
+
 		super();
 		add(notes);
 		add(splashes);

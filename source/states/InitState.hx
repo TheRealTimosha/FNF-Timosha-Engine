@@ -89,7 +89,7 @@ class InitState extends MusicBeatState
 				File.saveContent(path,File.getContent(exportPath));
 				FileSystem.deleteFile(exportPath);
 				Sys.exit(0);
-			},null,new TitleState()));
+			},null,(ClientPrefs.data.disableSplash) ? new TitleState() : new StartupState()));
 		}else
 		#end
 		#end
@@ -98,11 +98,11 @@ class InitState extends MusicBeatState
 			controls.isInSubstate = false;
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			MusicBeatState.switchState(new FlashingState(new TitleState()));
+			MusicBeatState.switchState(new FlashingState((ClientPrefs.data.disableSplash) ? new TitleState() : new StartupState()));
 		}
-        else if (mustUpdate && !updateAlreadyShown){
+        else if (mustUpdate && !updateAlreadyShown) {
 			updateAlreadyShown = true;
-            MusicBeatState.switchState(new OutdatedState(updateVersion,new TitleState()));
+            MusicBeatState.switchState(new OutdatedState(updateVersion,(ClientPrefs.data.disableSplash) ? new TitleState() : new StartupState()));
         }
 		else
 		{
@@ -113,7 +113,7 @@ class InitState extends MusicBeatState
 					#elseif CHARTING
 					MusicBeatState.switchState(new ChartingState());
 					#else
-					MusicBeatState.switchState(new TitleState());
+					MusicBeatState.switchState((ClientPrefs.data.disableSplash) ? new TitleState() : new StartupState());
 					#end
 				});
 		}

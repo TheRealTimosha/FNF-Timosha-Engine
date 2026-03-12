@@ -498,7 +498,7 @@ class StoryMenuState extends MusicBeatState
 		#end
 	}
 
-	var lerpScore:Int = 49324858;
+	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 
 	function changeWeek(change:Float = 0, usePrecision:Bool = false):Void

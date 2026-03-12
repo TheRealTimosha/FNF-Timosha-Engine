@@ -138,6 +138,13 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			['Time Left', 'Time Elapsed', 'Song Name', 'Modern Time', 'Song Name + Time', 'Disabled']);
 		addOption(option);
 
+		var option:Option = new Option('Watermark Style:',
+		    "How would you like your Watermark to look?",
+		    'watermarkStyle',
+			STRING,
+		   ['Vanilla', 'Dave Engine', 'JS Engine', 'JS Engine (Old)', 'Forever Engine', 'Os Engine', 'SB Engine', 'Modding+', 'Furret Engine', 'Domino Engine', 'Hide']);
+	    addOption(option);
+
 		var option:Option = new Option('Strum Light Up Style:',
 		    "How would you like the strum animations to play when lit up? \nNote: Turn on 'Light Opponent/Player Strums' to see this in action!",
 		    'strumLitStyle',

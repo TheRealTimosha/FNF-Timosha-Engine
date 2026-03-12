@@ -225,6 +225,8 @@ class PlayState extends MusicBeatState
 	public var songMisses:Int = 0;
 	public var scoreTxt:FlxText;
 
+	var EngineWatermark:FlxText;
+
 	private var lerpingScore:Bool = true;
 	public var shownScore:Float = 0;
 
@@ -532,6 +534,63 @@ class PlayState extends MusicBeatState
 		timeBar.visible = showTime;
 		uiGroup.add(timeBar);
 		uiGroup.add(timeTxt);
+
+		EngineWatermark = new FlxText(4, FlxG.height * 0.9 + 50, 0, "", 16);
+		EngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+		EngineWatermark.scrollFactor.set();
+		EngineWatermark.text = SONG.song;
+		uiGroup.add(EngineWatermark);
+
+		switch(ClientPrefs.data.watermarkStyle)
+		{
+			case 'Vanilla': 
+				EngineWatermark.text = SONG.song + " - " + Difficulty.getString().toUpperCase() + " | TE " + MainMenuState.timoshaEngineVersion;
+			
+			case 'Forever Engine': 
+				EngineWatermark.text = "Timosha Engine v" + MainMenuState.timoshaEngineVersion;
+				EngineWatermark.x = FlxG.width - EngineWatermark.width - 5;
+			
+			case 'JS Engine': 
+				if (!ClientPrefs.data.downScroll) EngineWatermark.y = FlxG.height * 0.1 - 70;
+				EngineWatermark.text = "Playing " + SONG.song + " on " + Difficulty.getString().toUpperCase() + " - TE v" + MainMenuState.timoshaEngineVersion;
+			
+			case 'JS Engine (Old)': 
+				if (!ClientPrefs.data.downScroll) EngineWatermark.y = FlxG.height * 0.9 - 643;
+				EngineWatermark.text = "You are now playing " + SONG.song + " on " + Difficulty.getString().toUpperCase() + "! (TE v" + MainMenuState.timoshaEngineVersion + ")";
+			
+			case 'Dave Engine':
+				EngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE,FlxColor.BLACK);
+				EngineWatermark.text = SONG.song;
+				EngineWatermark.y = healthBar.y + 50;
+			
+			case 'Os Engine': 
+				EngineWatermark.text = SONG.song + " (" + Difficulty.getString().toUpperCase() + ") " + "| TE " + MainMenuState.timoshaEngineVersion;
+			
+			case 'SB Engine': 
+				EngineWatermark.y = healthBar.y + 47;
+				EngineWatermark.borderSize = 1.5;
+				EngineWatermark.setFormat(Paths.font("bahnschrift.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				EngineWatermark.text = "TE " + MainMenuState.timoshaEngineVersion + " (PE " + MainMenuState.psychEngineVersion + ")";
+			
+			case 'Modding+': 
+				EngineWatermark.text = Difficulty.getString().toUpperCase() + " - TE " + MainMenuState.timoshaEngineVersion;
+				EngineWatermark.setFormat(Paths.font("vcr.ttf"), 15, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				EngineWatermark.x = healthBar.x - 329;
+				EngineWatermark.y = healthBar.y + 63;
+			
+			case 'Furret Engine': 
+				if (!ClientPrefs.data.downScroll) EngineWatermark.y = FlxG.height * 0.1 - 70;
+				EngineWatermark.x = healthBar.x + 130;
+				EngineWatermark.text = "Timosha Engine " + MainMenuState.timoshaEngineVersion + " | " + SONG.song + " - " + Difficulty.getString().toUpperCase();
+			
+			case 'Domino Engine': 
+				EngineWatermark.y = healthBar.y + 50;
+				EngineWatermark.text = "Timosha Engine " + "(PE " + "v" + MainMenuState.psychEngineVersion + ")" + " v" + MainMenuState.timoshaEngineVersion;
+
+			default: 
+		}
+
+		if (ClientPrefs.data.watermarkStyle == 'Hide' && EngineWatermark != null) EngineWatermark.visible = false;
 
 		noteGroup.add(strumLineNotes);
 
@@ -3813,12 +3872,6 @@ function opponentNoteHit(note:Note):Void
 		}
 	}
 
-	if (!note.isSustainNote)
-	{
-		oppNotesHitArray.push(1);
-	    oppNotesHitDateArray.push(Conductor.songPosition);
-	}
-
 	if (opponentVocals.length <= 0)
 		vocals.volume = 1;
 	if (ClientPrefs.data.strumLitStyle == 'BPM Based') {
@@ -3842,7 +3895,11 @@ function opponentNoteHit(note:Note):Void
 	spawnHoldSplashOnNote(note);
 
 	if (!note.isSustainNote)
+	{
 		invalidateNote(note);
+	    oppNotesHitArray.push(1);
+	    oppNotesHitDateArray.push(Conductor.songPosition);
+	}
 }
 
 public function goodNoteHit(note:Note):Void

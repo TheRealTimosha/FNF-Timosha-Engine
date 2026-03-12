@@ -40,6 +40,7 @@ import states.InitState;
 	public var hideHud:Bool = false;
 	public var tauntOnGo:Bool = false;
 	public var timeBarType:String = 'Time Left';
+	public var watermarkStyle:String = 'Vanilla';
 	public var strumLitStyle:String = 'BPM Based';
 	public var flashing:Bool = true;
 	public var camZooms:Bool = true;

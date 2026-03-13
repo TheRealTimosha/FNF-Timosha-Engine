@@ -215,6 +215,22 @@ description_multithreaded_caching: "Pozwala ekranowi ladowania na uzycie kilku w
 setting_wide_screen_mode: "Tryb Szerokokatny"
 description_wide_screen_mode: "Po zaznaczeniu, pozwoli grze na rozszezeniu sie w celu wypelnienia ekranu. Moze to spowodowac bugi w niektorych modach."
 
+//Optimization
+setting_light_opponent_strums: "Lekkie Uderzenia Przeciwnika"
+description_light_opponent_strums: "Jeśli ta opcja nie jest odznaczeniu, dźwięki przeciwnika nie będą się świecić, gdy przeciwnik zagra jakąś nutę."
+setting_light_player_strums: "Lekki Gracz Brzdąka"
+description_light_player_strums: "Jeśli ta opcja jest odznaczeniu, to... dźwięki gracza nie będą się świecić. To takie proste."
+setting_show_ratings: "Pokaż Oceny"
+description_show_ratings: "Po odznaczeniu, gra nie będzie wyświetlać ikony oceny po trafieniu w nutę."
+setting_show_combo_numbers: "Pokaż Liczby Combo"
+description_show_combo_numbers: "Po odznaczeniu, gra nie będzie wyświetlać numerów kombinacji po trafieniu nuty."
+setting_show_combo: "Pokaż Kombinację"
+description_show_combo: "Po odznaczeniu, gra nie będzie wyświetlać symbolu kombinacji po trafieniu w nutę."
+setting_show_ms_popup: "Pokaż Wyskakujące Okienko MS"
+description_show_ms_popup: "Po zaznaczeniu, naciśnięcie danej nuty wyświetli także informację o tym, jak późno/wcześnie ją nacisnięto."
+setting_even_less_botplay_lag: "Jeszcze MNIEJ opóźnień w Botplay"
+description_even_less_botplay_lag: "Zredukuj jeszcze bardziej opóźnienia Botplay."
+
 // Visuals Settings
 setting_note_skins: "Skiny Strzalek"
 setting_note_skins-default: "Default"

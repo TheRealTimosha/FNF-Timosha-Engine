@@ -30,6 +30,15 @@ import states.InitState;
 	public var wideScreen:Bool = false;
 	public var framerate:Int = 60;
 
+	//Optimization
+	public var opponentLightStrum:Bool = true;
+	public var playerLightStrum:Bool = true;
+	public var ratingPopups:Bool = true;
+	public var comboNumPopups:Bool = true;
+	public var comboPopups:Bool = false;
+	public var showMS:Bool = false;
+	public var lessBotLag:Bool = false;
+
 	//Visuals & UI
 	public var noteSkin:String = 'Default';
 	public var splashSkin:String = 'Psych';
@@ -62,7 +71,6 @@ import states.InitState;
 	public var ghostTapping:Bool = true;
 	public var badShitBreakCombo:Bool = false;
 	public var autoPause:Bool = true;
-	public var popUpRating:Bool = true;
 	public var noReset:Bool = false;
 	public var antiCheatEnable:Bool = false;
 	public var spaceVPose:Bool = true;
@@ -134,7 +142,7 @@ import states.InitState;
 	public var showFPS:Bool = true;
 	public var vsliceMobileControls:Bool = false;
 	public var noteOffset:Int = 0;
-	public var comboOffset:Array<Int> = [0, 0, 0, 0];
+	public var comboOffset:Array<Int> = [0, 0, 0, 0, 0, 0];
 	public var loadingScreen:Bool = true;
 }
 

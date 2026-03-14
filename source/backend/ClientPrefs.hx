@@ -51,6 +51,7 @@ import states.InitState;
 	public var timeBarType:String = 'Time Left';
 	public var watermarkStyle:String = 'Vanilla';
 	public var strumLitStyle:String = 'BPM Based';
+	public var iconBounceType:String = 'Default';
 	public var flashing:Bool = true;
 	public var camZooms:Bool = true;
 	public var scoreZoom:Bool = true;

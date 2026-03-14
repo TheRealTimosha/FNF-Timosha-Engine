@@ -51,6 +51,7 @@ class HealthIcon extends FlxSprite
 	override function updateHitbox()
 	{
 		super.updateHitbox();
+		if(ClientPrefs.data.iconBounceType != 'Golden Apple' && ClientPrefs.data.iconBounceType != 'Dave and Bambi' && ClientPrefs.data.iconBounceType != 'Definitive Edition' || !Std.isOfType(FlxG.state, PlayState))
 		if(autoAdjustOffset)
 		{
 			offset.x = iconOffsets[0];

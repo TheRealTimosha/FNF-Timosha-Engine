@@ -152,6 +152,13 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		   ['BPM Based', 'Full Anim']);
 	    addOption(option);
 
+		var option:Option = new Option('Icon Bounce:',
+		    "Which icon bounce would you like?",
+		    'iconBounceType',
+			STRING,
+		   ['Default', 'Golden Apple', 'Dave and Bambi', 'Old Psych', 'VS Steve', 'Plank Engine', 'Strident Crisis', 'Shadow Engine', 'Os Engine', 'Definitive Edition', 'SB Engine', 'Furret Engine', 'Lore Engine', 'None']);
+	    addOption(option);
+
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',

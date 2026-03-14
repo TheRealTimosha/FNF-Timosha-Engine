@@ -184,6 +184,7 @@ class PlayState extends MusicBeatState
 
 	public var gfSpeed:Int = 1;
 	public var health:Float = 1;
+	public var maxHealth:Float = 2;
 
 	private var healthLerp:Float = 1;
 
@@ -2103,8 +2104,8 @@ override public function update(elapsed:Float)
 	updateIconsScale(elapsed);
 	updateIconsPosition();
 
-	if (health > 2)
-		health = 2;
+	if (health > maxHealth)
+	health = maxHealth;
 
 	if (iconP1.animation.numFrames == 3) {
 		if (healthBar.percent < 20)
@@ -2370,12 +2371,86 @@ override public function update(elapsed:Float)
 // Health icon updaters
 public dynamic function updateIconsScale(elapsed:Float)
 {
-	var mult:Float = FlxMath.lerp(1, iconP1.scale.x, Math.exp(-elapsed * 9 * playbackRate));
-	iconP1.scale.set(mult, mult);
-	iconP1.updateHitbox();
+	if (ClientPrefs.data.iconBounceType == 'Default' || ClientPrefs.data.iconBounceType == 'VS Steve' || ClientPrefs.data.iconBounceType == 'Os Engine' || ClientPrefs.data.iconBounceType == 'SB Engine' || ClientPrefs.data.iconBounceType == 'Lore Engine') {
+		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, Math.exp(-elapsed * 9 * playbackRate));
+		iconP1.scale.set(mult, mult);
+		iconP1.updateHitbox();
 
-	var mult:Float = FlxMath.lerp(1, iconP2.scale.x, Math.exp(-elapsed * 9 * playbackRate));
-	iconP2.scale.set(mult, mult);
+		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, Math.exp(-elapsed * 9 * playbackRate));
+		iconP2.scale.set(mult, mult);
+		iconP2.updateHitbox();
+	}	
+	
+	if (ClientPrefs.data.iconBounceType == 'Golden Apple') {
+	    iconP1.centerOffsets();
+		iconP2.centerOffsets();
+	}
+
+	if (ClientPrefs.data.iconBounceType == 'Furret Engine') {
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.5 / playbackRate)));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.5 / playbackRate)));
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Shadow Engine') {
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50 / playbackRate)));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50 / playbackRate)));
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Strident Crisis') {
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.frameWidth, iconP1.width, 0.50 / playbackRate)),
+			Std.int(FlxMath.lerp(iconP1.frameHeight, iconP1.height, 0.50 / playbackRate)));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.frameWidth, iconP2.width, 0.50 / playbackRate)),
+			Std.int(FlxMath.lerp(iconP2.frameHeight, iconP1.height, 0.50 / playbackRate)));
+	}
+	
+	if (ClientPrefs.data.iconBounceType == 'Dave and Bambi') {
+	    iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.frameWidth, iconP1.width, 0.8 / playbackRate)),
+			Std.int(FlxMath.lerp(iconP1.frameHeight, iconP1.height, 0.8 / playbackRate)));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.frameWidth, iconP2.width, 0.8 / playbackRate)),
+			Std.int(FlxMath.lerp(iconP2.frameHeight, iconP2.height, 0.8 / playbackRate)));
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Old Psych') {
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.frameWidth, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30 * playbackRate), 0, 1))),
+			Std.int(FlxMath.lerp(iconP1.frameHeight, iconP1.height, CoolUtil.boundTo(1 - (elapsed * 30 * playbackRate), 0, 1))));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.frameWidth, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30 * playbackRate), 0, 1))),
+			Std.int(FlxMath.lerp(iconP2.frameHeight, iconP2.height, CoolUtil.boundTo(1 - (elapsed * 30 * playbackRate), 0, 1))));
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Plank Engine') {
+		final funnyBeat = (Conductor.songPosition / 1000) * (Conductor.bpm / 60);
+
+		iconP1.offset.y = Math.abs(Math.sin(funnyBeat * Math.PI))  * 16 - 4;
+		iconP2.offset.y = Math.abs(Math.sin(funnyBeat * Math.PI))  * 16 - 4;
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Definitive Edition') {
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.8)),Std.int(FlxMath.lerp(150, iconP1.height, 0.8 / playbackRate)));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.8)),Std.int(FlxMath.lerp(150, iconP2.height, 0.8 / playbackRate)));
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'SB Engine') {
+		if (iconP1.angle >= 0) {
+			if (iconP1.angle != 0) {
+				iconP1.angle -= 1 * playbackRate;
+			}
+		} else {
+			if (iconP1.angle != 0) {
+				iconP1.angle += 1 * playbackRate;
+			}
+		}
+			if (iconP2.angle >= 0) {
+			    if (iconP2.angle != 0) {
+				iconP2.angle -= 1 * playbackRate;
+			}
+		} else {
+			if (iconP2.angle != 0) {
+				iconP2.angle += 1 * playbackRate;
+			}
+		}
+	}
+		
+	iconP1.updateHitbox();
 	iconP2.updateHitbox();
 }
 
@@ -4156,11 +4231,7 @@ override function beatHit()
 	if (generatedMusic)
 		notes.sort(FlxSort.byY, ClientPrefs.data.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 
-	iconP1.scale.set(1.2, 1.2);
-	iconP2.scale.set(1.2, 1.2);
-
-	iconP1.updateHitbox();
-	iconP2.updateHitbox();
+    bopIcons();
 
 	characterBopper(curBeat);
 
@@ -4169,6 +4240,181 @@ override function beatHit()
 
 	setOnScripts('curBeat', curBeat);
 	callOnScripts('onBeatHit');
+}
+
+var dancingLeft:Bool = false;
+public var iconSmallGo:Float = 0.8;
+public var iconBigGo:Float = 1.2;
+public function bopIcons(?bopBF:Bool = false)
+{
+	if (ClientPrefs.data.iconBounceType == 'Os Engine') {
+		dancingLeft = !dancingLeft;
+		if (dancingLeft){
+			iconP1.angle = 8; iconP2.angle = 8; // maybe i should do it with tweens, but i'm lazy // i'll make it in -1.0.0, i promise
+		} else { 
+			iconP1.angle = -8; iconP2.angle = -8;
+		}
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Golden Apple') {
+	if (curBeat % gfSpeed == 0)
+		curBeat % (gfSpeed * 2) == 0 * playbackRate ? {
+		iconP1.scale.set(1.1, 0.8);
+		iconP2.scale.set(1.1, 1.3);
+
+		FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 / playbackRate * gfSpeed, {ease: FlxEase.quadOut});
+		FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 / playbackRate * gfSpeed, {ease: FlxEase.quadOut});
+		} : {
+			iconP1.scale.set(1.1, 1.3);
+			iconP2.scale.set(1.1, 0.8);
+
+		FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 / playbackRate * gfSpeed, {ease: FlxEase.quadOut});
+		FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 / playbackRate * gfSpeed, {ease: FlxEase.quadOut});
+		}
+
+		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 / playbackRate * gfSpeed, {ease: FlxEase.quadOut});
+		FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 / playbackRate * gfSpeed, {ease: FlxEase.quadOut});
+		}
+		
+	if (ClientPrefs.data.iconBounceType == 'VS Steve') {
+		if (curBeat % gfSpeed == 0)
+		{
+			curBeat % (gfSpeed * 2) == 0 ?
+			{
+				iconP1.scale.set(1.1, 0.8);
+				iconP2.scale.set(1.1, 1.3);
+			} : {
+				iconP1.scale.set(1.1, 1.3);
+				iconP2.scale.set(1.1, 0.8);
+			FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed / playbackRate, {ease: FlxEase.quadOut});
+			FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed / playbackRate, {ease: FlxEase.quadOut});
+		}
+
+		    FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed / playbackRate, {ease: FlxEase.quadOut});
+			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed / playbackRate, {ease: FlxEase.quadOut});
+
+		}
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Strident Crisis') {
+		final funny:Float = (healthBar.percent * 0.01) + 0.01;
+
+		//health icon bounce but epic
+		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * (2 + funny))),Std.int(iconP2.height - (25 * (2 + funny))));
+		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * (2 - funny))),Std.int(iconP2.height - (25 * (2 - funny))));
+
+		iconP1.scale.set(1.1, 0.8);
+		iconP2.scale.set(1.1, 0.8);
+
+		FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+		FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+
+		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed / playbackRate, {ease: FlxEase.quadOut});
+		FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed / playbackRate, {ease: FlxEase.quadOut});
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Dave and Bambi') {
+		final funny:Float = Math.max(Math.min(healthBar.valueFunction(),(maxHealth*0.95)),0.1);
+
+		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * (funny + 0.1))),Std.int(iconP1.height - (25 * funny)));
+		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * ((2 - funny) + 0.1))),Std.int(iconP2.height - (25 * ((2 - funny) + 0.1))));
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Old Psych' || ClientPrefs.data.iconBounceType == 'Shadow Engine') {
+		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+		iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+	}
+
+	if (ClientPrefs.data.iconBounceType == 'Lore Engine') {
+		if (curBeat % 2 != 0) iconP1.scale.set(iconBigGo, iconBigGo) else iconP1.scale.set(iconSmallGo, iconSmallGo);
+		if (curBeat % 2 != 0) iconP2.scale.set(iconBigGo, iconBigGo) else iconP2.scale.set(iconSmallGo, iconSmallGo);
+	}
+
+	if (ClientPrefs.data.iconBounceType == 'Furret Engine') {
+		iconP1.setGraphicSize(Std.int(iconP1.width + 60));
+		iconP2.setGraphicSize(Std.int(iconP2.width + 60));
+
+		if (curBeat % gfSpeed == 0)
+		{
+			curBeat % ((gfSpeed * 2) / 1) == 0 ? {
+				iconP1.scale.set(1.1, 0.8);
+				iconP2.scale.set(1.1, 1.3);
+
+				FlxTween.angle(iconP1, -15, 0, (Conductor.crochet / 1300) / 1 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP2, 15, 0, (Conductor.crochet / 1300) / 1 * gfSpeed, {ease: FlxEase.quadOut});
+			} : {
+				iconP1.scale.set(1.1, 1.3);
+				iconP2.scale.set(1.1, 0.8);
+
+				FlxTween.angle(iconP2, -15, 0, (Conductor.crochet / 1300) / 1 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP1, 15, 0, (Conductor.crochet / 1300) / 1 * gfSpeed, {ease: FlxEase.quadOut});
+				}
+
+			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, (Conductor.crochet / 1250) / 1 * gfSpeed, {ease: FlxEase.quadOut});
+			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, (Conductor.crochet / 1250) / 1 * gfSpeed, {ease: FlxEase.quadOut});
+		}
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Plank Engine') {
+		iconP1.scale.x = 1.3;
+		iconP1.scale.y = 0.75;
+		iconP2.scale.x = 1.3;
+		iconP2.scale.y = 0.75;
+		FlxTween.cancelTweensOf(iconP1);
+		FlxTween.cancelTweensOf(iconP2);
+		FlxTween.tween(iconP1, {"scale.x": 1, "scale.y": 1}, Conductor.crochet / 1000 / playbackRate, {ease: FlxEase.backOut});
+		FlxTween.tween(iconP2, {"scale.x": 1, "scale.y": 1}, Conductor.crochet / 1000 / playbackRate, {ease: FlxEase.backOut});
+		if (curBeat % 4 == 0) {
+			iconP1.offset.x = 10;
+			iconP2.offset.x = -10;
+			iconP1.angle = -15;
+			iconP2.angle = 15;
+			FlxTween.tween(iconP1, {"offset.x": 0, angle: 0}, Conductor.crochet / 1000 / playbackRate, {ease: FlxEase.expoOut});
+			FlxTween.tween(iconP2, {"offset.x": 0, angle: 0}, Conductor.crochet / 1000 / playbackRate, {ease: FlxEase.expoOut});
+		}
+	}
+		
+	if (ClientPrefs.data.iconBounceType == 'Definitive Edition') {
+
+	var funny:Float = (healthBar.percent * 0.01) + 0.01;
+
+	//icon squish funny haha
+	iconP1.setGraphicSize(Std.int(iconP1.width + (50 * funny)),Std.int(iconP2.height - (25 * funny)));
+	iconP2.setGraphicSize(Std.int(iconP1.width + (50 * funny)),Std.int(iconP2.height - (25 * funny)));
+		
+	if (curBeat % 4 == 0) // icon bop coollll shittt t t t t 
+	{
+		FlxTween.angle(iconP1, -30, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+		FlxTween.angle(iconP2, 30, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+	}
+
+}
+        
+	if (ClientPrefs.data.iconBounceType == 'Default' || ClientPrefs.data.iconBounceType == 'Os Engine') {
+	iconP1.scale.set(1.2, 1.2);
+	iconP2.scale.set(1.2, 1.2);
+}
+		
+	if (ClientPrefs.data.iconBounceType == 'SB Engine') {
+		if (curBeat % gfSpeed == 0) {
+			if (curBeat % (gfSpeed * 2) == 0) {
+			iconP1.scale.set(0.8, 0.8);
+			iconP2.scale.set(1.2, 1.3);
+
+			iconP1.angle = -15;
+			iconP2.angle = 15;
+		} else {
+			iconP2.scale.set(0.8, 0.8);
+			iconP1.scale.set(1.2, 1.3);
+
+			iconP2.angle = -15;
+			iconP1.angle = 15;
+		    }
+		}
+	}
+		
+	iconP1.updateHitbox();
+	iconP2.updateHitbox();
 }
 
 public function characterBopper(beat:Int):Void

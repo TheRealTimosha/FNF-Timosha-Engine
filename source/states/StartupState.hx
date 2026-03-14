@@ -105,6 +105,7 @@ class StartupState extends MusicBeatState
 			switch (theIntro) {
 				case 0:
 					FlxG.sound.play(Paths.sound('splash/startup'));
+					FlxG.sound.play(Paths.soundRandom('splash/pizzelle/sfx_ss_taunt', 1, 8));
 					logo.scale.set(0.1,0.1);
 					logo.updateHitbox();
 					logo.screenCenter();

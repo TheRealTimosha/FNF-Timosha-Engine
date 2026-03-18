@@ -58,7 +58,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 
-			var option:Option = new Option('Enable Taunt Key',
+		var option:Option = new Option('Enable Taunt Key',
 			"If checked, pressing the Taunt key will make BF go HEY!!",
 			'spaceVPose',
             BOOL);

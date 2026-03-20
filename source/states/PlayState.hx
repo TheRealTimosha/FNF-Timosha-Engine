@@ -2217,7 +2217,7 @@ override public function update(elapsed:Float)
 	else if (!paused && updateTime)
 	{
 		var curTime:Float = Math.max(0, Conductor.songPosition - ClientPrefs.data.noteOffset);
-		songPercent = Conductor.songPosition / songLength;
+		songPercent = (Conductor.songPosition - ClientPrefs.data.noteOffset) / songLength;
 
 		var songCalc:Float = (songLength - curTime);
 		if (ClientPrefs.data.timeBarType == 'Time Elapsed')
@@ -3790,7 +3790,7 @@ function noteMissPress(direction:Int = 1):Void // You pressed a key when there w
 		return; // fuck it
 
 	noteMissCommon(direction);
-	FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+	if(ClientPrefs.data.missSoundShit) FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 	stagesFunc(function(stage:BaseStage) stage.noteMissPress(direction));
 	callOnScripts('noteMissPress', [direction]);
 }
@@ -3886,6 +3886,8 @@ function noteMissCommon(direction:Int, note:Note = null)
 		}
 	}
 	vocals.volume = 0;
+
+	if(ClientPrefs.data.missSoundShit) {FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));}
 }
 
 var canPlay = true;

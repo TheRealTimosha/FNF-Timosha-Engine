@@ -75,6 +75,7 @@ import states.InitState;
 	public var noReset:Bool = false;
 	public var antiCheatEnable:Bool = false;
 	public var spaceVPose:Bool = true;
+	public var missSoundShit:Bool = false;
 	public var vibrating:Bool = false;
 	public var guitarHeroSustains:Bool = true;
 	public var hitsoundVolume:Float = 0;

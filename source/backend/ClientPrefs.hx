@@ -134,7 +134,8 @@ import states.InitState;
 		'instakill' => false,
 		'practice' => false,
 		'botplay' => false,
-		'opponentplay' => false
+		'opponentdrain' => false,
+		'drainlevel' => 1,
 	];
 	
     //Other

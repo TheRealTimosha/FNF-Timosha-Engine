@@ -29,49 +29,72 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.scrollSpeed = 2.0;
 		option.minValue = 0.35;
 		option.changeValue = 0.05;
+		option.slowChangeVal = 0.01;
 		option.decimals = 2;
 		if (goption.getValue() != "constant")
 		{
 			option.displayFormat = '%vX';
-			option.maxValue = 3;
+			option.maxValue = 128;
 		}
 		else
 		{
 			option.displayFormat = "%v";
-			option.maxValue = 6;
+			option.maxValue = 1024;
 		}
 		optionsArray.push(option);
 
 		#if FLX_PITCH
 		var option:GameplayOption = new GameplayOption('Playback Rate', 'songspeed', FLOAT, 1);
-		option.scrollSpeed = 1;
-		option.minValue = 0.5;
-		option.maxValue = 3.0;
+		option.scrollSpeed = 3;
+		option.minValue = 0.01;
+		option.maxValue = 100;
 		option.changeValue = 0.05;
+		option.slowChangeVal = 0.01;
 		option.displayFormat = '%vX';
 		option.decimals = 2;
 		optionsArray.push(option);
 		#end
 
 		var option:GameplayOption = new GameplayOption('Health Gain Multiplier', 'healthgain', FLOAT, 1);
-		option.scrollSpeed = 2.5;
-		option.minValue = 0;
-		option.maxValue = 5;
+		option.scrollSpeed = 5;
+		option.minValue = -1;
+		option.maxValue = 50;
 		option.changeValue = 0.1;
+		option.slowChangeVal = 0.01;
+		option.decimals = 3;
 		option.displayFormat = '%vX';
 		optionsArray.push(option);
 
 		var option:GameplayOption = new GameplayOption('Health Loss Multiplier', 'healthloss', FLOAT, 1);
 		option.scrollSpeed = 2.5;
-		option.minValue = 0.5;
-		option.maxValue = 5;
+		option.minValue = -1;
+		option.maxValue = 50;
 		option.changeValue = 0.1;
+		option.slowChangeVal = 0.01;
+		option.decimals = 3;
 		option.displayFormat = '%vX';
 		optionsArray.push(option);
 
-		optionsArray.push(new GameplayOption('Instakill on Miss', 'instakill', BOOL, false));
-		optionsArray.push(new GameplayOption('Practice Mode', 'practice', BOOL, false));
-		optionsArray.push(new GameplayOption('Botplay', 'botplay', BOOL, false));
+		var option:GameplayOption = new GameplayOption('Instakill on Miss', 'instakill', BOOL, false);
+		optionsArray.push(option);
+		
+		var option:GameplayOption = new GameplayOption('Practice Mode', 'practice', BOOL, false);
+		optionsArray.push(option);
+		
+		var option:GameplayOption = new GameplayOption('Botplay', 'botplay', BOOL, false);
+		optionsArray.push(option);
+
+		var option:GameplayOption = new GameplayOption('Opponent Health Drain', 'opponentdrain', BOOL, false);
+		optionsArray.push(option);
+
+		var option:GameplayOption = new GameplayOption('Health Drain Level: ', 'drainlevel', FLOAT, 1);
+		option.scrollSpeed = 2;
+		option.minValue = -1;
+		option.maxValue = 10;
+		option.changeValue = 0.1;
+		option.slowChangeVal = 0.01;
+		option.displayFormat = '%vX';
+		optionsArray.push(option);
 	}
 
 	public function getOptionByName(name:String)
@@ -222,7 +245,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 						{
 							var add:Dynamic = null;
 							if (curOption.type != STRING)
-								add = controls.UI_LEFT ? -curOption.changeValue : curOption.changeValue;
+								add = controls.UI_LEFT ? (FlxG.keys.pressed.CONTROL ? -curOption.slowChangeVal : -curOption.changeValue) : (FlxG.keys.pressed.CONTROL ? curOption.slowChangeVal : curOption.changeValue);
 
 							switch (curOption.type)
 							{
@@ -443,6 +466,7 @@ class GameplayOption
 	public var curOption:Int = 0; // Don't change this
 	public var options:Array<String> = null; // Only used in string type
 	public var changeValue:Dynamic = 1; // Only used in int/float/percent type, how much is changed when you PRESS
+	public var slowChangeVal:Dynamic = 1; //how much is changed when you PRESS while holding CONTROL
 	public var minValue:Dynamic = null; // Only used in int/float/percent type
 	public var maxValue:Dynamic = null; // Only used in int/float/percent type
 	public var decimals:Int = 1; // Only used in float/percent type

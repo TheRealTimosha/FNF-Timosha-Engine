@@ -212,6 +212,9 @@ class PlayState extends MusicBeatState
 	public var healthGain:Float = 1;
 	public var healthLoss:Float = 1;
 
+	public var opponentDrain:Bool = false;
+	public var hpDrainLevel:Float = 1;
+
 	public var guitarHeroSustains:Bool = false;
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
@@ -347,6 +350,8 @@ class PlayState extends MusicBeatState
 		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill');
 		practiceMode = ClientPrefs.getGameplaySetting('practice');
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay');
+		opponentDrain = ClientPrefs.getGameplaySetting('opponentdrain');
+		hpDrainLevel = ClientPrefs.getGameplaySetting('drainlevel');
 		guitarHeroSustains = ClientPrefs.data.guitarHeroSustains;
 
 		// var gameCam:FlxCamera = FlxG.camera;
@@ -3963,6 +3968,8 @@ function opponentNoteHit(note:Note):Void
 	]);
 	if (result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll)
 		callOnHScript('opponentNoteHit', [note]);
+
+	if (opponentDrain && health > 0.02) health -= note.hitHealth * hpDrainLevel;
 
 	spawnHoldSplashOnNote(note);
 

@@ -196,6 +196,8 @@ setting_health_loss_multiplier: "Mnoznik Utraty Zycia"
 setting_instakill_on_miss: "Instakill na Missie"
 setting_practice_mode: "Tryb Treningowy"
 setting_botplay: "Tryb Botplay"
+setting_opponent_health_drain: "Wysysanie Zdrowia Przeciwnika"
+setting_health_drain_level: "Poziom wyczerpania zdrowia:"
 
 // Graphics Settings
 setting_low_quality: "Niska Jakosc"

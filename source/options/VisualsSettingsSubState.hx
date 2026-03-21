@@ -156,7 +156,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		    "Which icon bounce would you like?",
 		    'iconBounceType',
 			STRING,
-		   ['Default', 'Golden Apple', 'Dave and Bambi', 'Old Psych', 'VS Steve', 'Plank Engine', 'Strident Crisis', 'Shadow Engine', 'Os Engine', 'Definitive Edition', 'SB Engine', 'Furret Engine', 'Lore Engine', 'None']);
+		   ['Default', 'Golden Apple', 'Dave and Bambi', 'Old Psych', 'VS Steve', 'Plank Engine', 'Strident Crisis', 'Shadow Engine', 'Os Engine', 'Definitive Edition', 'SB Engine', 'Furret Engine', 'Lore Engine', 'NovaFlare Engine', 'None']);
 	    addOption(option);
 
 		var option:Option = new Option('Flashing Lights',

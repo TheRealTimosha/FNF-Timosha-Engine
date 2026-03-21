@@ -2385,6 +2385,18 @@ public dynamic function updateIconsScale(elapsed:Float)
 		iconP2.scale.set(mult, mult);
 		iconP2.updateHitbox();
 	}	
+
+	if (ClientPrefs.data.iconBounceType == 'NovaFlare Engine')
+	{
+		// Taken from NovaFlare Engine
+		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, FlxMath.bound((1 - (elapsed * 9 * playbackRate)) / 1.1, 0, 1));
+		iconP1.scale.set(mult, mult);
+		iconP1.updateHitbox();
+
+		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, FlxMath.bound((1 - (elapsed * 9 * playbackRate)) / 1.1, 0, 1));
+		iconP2.scale.set(mult, mult);
+		iconP2.updateHitbox();
+	}
 	
 	if (ClientPrefs.data.iconBounceType == 'Golden Apple') {
 	    iconP1.centerOffsets();
@@ -4260,6 +4272,13 @@ public function bopIcons(?bopBF:Bool = false)
 		} else { 
 			iconP1.angle = -8; iconP2.angle = -8;
 		}
+	}
+
+	if (ClientPrefs.data.iconBounceType == 'NovaFlare Engine')
+	{
+		// Taken from NovaFlare Engine
+		iconP1.scale.set(1.3, 1.3);
+		iconP2.scale.set(1.3, 1.3);
 	}
 		
 	if (ClientPrefs.data.iconBounceType == 'Golden Apple') {

@@ -177,6 +177,8 @@ setting_health_loss_multiplier: "Mult. de Vida Perdida"
 setting_instakill_on_miss: "Morrer ao Errar"
 setting_practice_mode: "Modo Prática"
 setting_botplay: "Modo Automático"
+setting_opponent_health_drain: "Drenagem de Vida do Oponente"
+setting_health_drain_level: "Nível de drenagem de saúde:"
 
 // Graphics Settings
 setting_low_quality: "Baixa Qualidade"
